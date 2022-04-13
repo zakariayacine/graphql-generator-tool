@@ -1,75 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-    <title>Document</title>
-    <style>
-        .center {
-            text-align: center;
-            border: 3px solid rgb(0, 0, 0);
-        }
-
-        .card {
-            color: rgb(0, 65, 65) !important;
-        }
-        code{
-            display: block;
-            background-color: #EFEFEF;  
-        }
-        .code {
-            padding: -40px;
-            margin-left: -200px;
-        }
-       
-    </style>
-</head>
-
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">GraphQL Scheema Lighthouse Creator</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/create">Create</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Show liste</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+@section('content')
+<div class="container">
     <div class="row">
-        <div class="col-md-3">
-            <div class="container">
-                <ul class="list-group">
-                    <li class="list-group-item">Liste des tables model genéré</li>
-                    @foreach ($listes as $liste)
-                    <li class="list-group-item">
-                        <div class="d-grid gap-2">
-                            <a class="btn btn-success" href="/show/{{$liste->id}}">Model: {{$liste->table_name}}</a>
-                        </div>
-                    </li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
-        <div class="col-md-9">
-            <div class="container">
-                <div class="row">
                     <div class="col-md-12">
                         <div class="card mb-4">
                             <div class="card-body">
@@ -236,10 +169,5 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-
-</body>
-
-</html>
+</div>
+@endsection

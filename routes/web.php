@@ -1,8 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TableController;
- 
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +14,17 @@ use App\Http\Controllers\TableController;
 |
 */
 
-Route::get('/', [TableController::class, 'index']);
-Route::get('/create', [TableController::class, 'create']);
-Route::get('/show/{id}', [TableController::class, 'show']);
-Route::post('/store', [TableController::class, 'store']);
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/project', [App\Http\Controllers\ProjectController::class, 'index'])->name('home');
+Route::get('/project/create', [App\Http\Controllers\ProjectController::class, 'create'])->name('create');
+Route::get('/project/show/{id}', [App\Http\Controllers\ProjectController::class, 'show'])->name('show');
+Route::post('/project/store', [App\Http\Controllers\ProjectController::class, 'store']);
+//model
+Route::get('/project/model/show/{id}', [App\Http\Controllers\TableController::class, 'index'])->name('index');
+Route::get('/project/model/create/{id}', [App\Http\Controllers\TableController::class, 'create'])->name('create');
+Route::post('/project/model/store/{id}', [App\Http\Controllers\TableController::class, 'store']);

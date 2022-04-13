@@ -13,10 +13,11 @@ class TableController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        $tables = Table::get();
-        return view('liste', compact('tables'));
+        $listes = Table::get();
+        $table = Table::find($id);
+        return view("table.index", compact('table','listes'));
     }
 
     /**
@@ -24,9 +25,9 @@ class TableController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        return view("create");
+        return view('table.create', compact('id'));
     }
 
     /**
@@ -35,10 +36,11 @@ class TableController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
         $table = new Table();
         $table->table_name = $request->table;
+        $table->project_id = $id;
         $table->save();
 
         for ($i = 0; $i < count($request->columns); $i++) {
@@ -53,18 +55,15 @@ class TableController extends Controller
             "message"=>"columns saved",
         ]);
     }
-
     /**
      * Display the specified resource.
      *
      * @param  \App\Models\Table  $table
      * @return \Illuminate\Http\Response
      */
-    public function show(request $request , $id)
+    public function show(Table $table)
     {
-        $listes = Table::get();
-        $table = Table::find($id);
-        return view("show", compact('table','listes'));
+        //
     }
 
     /**
