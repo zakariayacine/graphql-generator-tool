@@ -11,7 +11,7 @@
 
 
                     <div class="container mt-5">
-                        <a href="/" class="btn btn-success">Retour vers la liste</a>
+                        <a href="/project" class="btn btn-success">Retour vers la liste</a>
                         <h2 align="center">Columns add</h2>
 
                         <div class="form-group">

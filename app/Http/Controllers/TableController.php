@@ -15,9 +15,8 @@ class TableController extends Controller
      */
     public function index($id)
     {
-        $listes = Table::get();
         $table = Table::find($id);
-        return view("table.index", compact('table','listes'));
+        return view("table.index", compact('table'));
     }
 
     /**
@@ -72,9 +71,10 @@ class TableController extends Controller
      * @param  \App\Models\Table  $table
      * @return \Illuminate\Http\Response
      */
-    public function edit(Table $table)
+    public function edit($id)
     {
-        //
+        $table = Table::find($id);
+        return view("table.index", compact('table'));
     }
 
     /**
@@ -95,8 +95,10 @@ class TableController extends Controller
      * @param  \App\Models\Table  $table
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Table $table)
+    public function destroy($id)
     {
-        //
+        $table = Table::find($id);
+        $table->delete();
+        return redirect('/project');
     }
 }

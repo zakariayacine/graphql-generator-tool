@@ -18,6 +18,7 @@ class CreateColumnsTable extends Migration
             $table->string('column_name');
             $table->string('column_type');
             $table->unsignedBigInteger('table_id');
+            $table->softDeletes('deleted_at');
             $table->foreign('table_id')->references('id')->on('tables');
             $table->timestamps();
         });

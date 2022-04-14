@@ -61,7 +61,7 @@ class ProjectController extends Controller
     public function show($id)
     {
         $models = Table::where("project_id",$id)->get();
-        return view("project.show", compact('models','id'));
+        return view("table.show", compact('models','id'));
     }
 
     /**

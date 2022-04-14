@@ -27,4 +27,5 @@ Route::post('/project/store', [App\Http\Controllers\ProjectController::class, 's
 //model
 Route::get('/project/model/show/{id}', [App\Http\Controllers\TableController::class, 'index'])->name('index');
 Route::get('/project/model/create/{id}', [App\Http\Controllers\TableController::class, 'create'])->name('create');
+Route::get('/project/model/destroy/{id}', [App\Http\Controllers\TableController::class, 'destroy']);
 Route::post('/project/model/store/{id}', [App\Http\Controllers\TableController::class, 'store']);
