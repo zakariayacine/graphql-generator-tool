@@ -47,9 +47,12 @@
                                             <td><input type="text" name="columns[]" placeholder="Enter column Name"
                                                     class="form-control name_list" /></td>
                                             <td><select class="form-select" name="type[]">
-                                                    <option value="String" selected>String</option>
+                                                    <option value="String">String</option>
                                                     <option value="Integer">Integer</option>
                                                     <option value="Date">Date</option>
+                                                    @foreach ($columns as $item)
+                                                    <option value="{{str_replace('_', '', ucfirst($item->table_name))}}">{{$item->table_name}}</option>
+                                                    @endforeach
                                                 </select></td>
 
                                             <td><button type="button" name="add" id="add" class="btn btn-success">Add

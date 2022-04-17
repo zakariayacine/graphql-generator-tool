@@ -128,11 +128,11 @@ body ,table{
                             }
                             
                             <span style="color: blue"> extend type </span>Mutation </span>{
-                                create{{ucfirst($table->table_name)}}(data: {{ucfirst($table->table_name) }}Input): {{ucfirst($table->table_name)}}!
+                                {{$table->table_name}}Create(data: {{ucfirst($table->table_name) }}Input): {{ucfirst($table->table_name)}}!
                                     @field(resolver: "App\\GraphQL\\Mutations\\{{ucfirst($table->table_name) }}Mutation@create")
-                                update{{ucfirst($table->table_name)}}(data: Update{{ucfirst($table->table_name) }}Input): {{ucfirst($table->table_name)}}!
+                               {{$table->table_name}}Update(data: Update{{ucfirst($table->table_name) }}Input): {{ucfirst($table->table_name)}}!
                                     @field(resolver: "App\\GraphQL\\Mutations\\{{ucfirst($table->table_name) }}Mutation@update")
-                                delete{{ucfirst($table->table_name) }}(
+                                {{$table->table_name}}Delete(
                                     delete: Delete{{ucfirst($table->table_name) }}Input): DeletedMessage!
                                     @field(resolver: "App\\GraphQL\\Mutations\\{{ucfirst($table->table_name) }}Mutation@delete")
                             }
@@ -145,26 +145,26 @@ body ,table{
                            <span style="color: green">  "{{$table->table_name }} input" </span>
                            <span style="color: blue"> input  </span>{{ucfirst($table->table_name)}}Input </span>@validator {
                                 @foreach ($table->columns as $column)
-                                <span style="margin-left:-150px "> {{$column->column_name}}: {{$column->column_type}}!</span>
+                                <span style="margin-left:-150px "> {{$column->column_name}}: @if($column->column_type === 'String' || $column->column_type === 'Int' || $column->column_type === 'Date'){{$column->column_type}}!@else {{$column->column_type}}Input!@endif</span>
                                 @endforeach
                             }
 
                             <span style="color: green"> "{{$table->table_name }} update input" </span>
-                           <span style="color: blue">  input </span>Update{{ucfirst($table->table_name)}}Input </span>@validator {
+                           <span style="color: blue">  input </span>{{$table->table_name}}UpdateInput </span>@validator {
                                 @foreach ($table->columns as $column)
-                               <span style="margin-left:-150px "> {{$column->column_name}}: {{$column->column_type}} </span>
+                               <span style="margin-left:-150px "> {{$column->column_name}}: @if($column->column_type === 'String' || $column->column_type === 'Int' || $column->column_type === 'Date'){{$column->column_type}}!@else {{$column->column_type}}Input!@endif</span>
                                 @endforeach
                             }
                             
                            <span style="color: green">  "{{$table->table_name }} Filter input" </span>
                             <span style="color: blue">input  </span>{{ucfirst($table->table_name)}}FilterInput </span>@validator {
                                 @foreach ($table->columns as $column)
-                                <span style="margin-left:-150px "> {{$column->column_name}}: {{$column->column_type}} </span>
+                                <span style="margin-left:-150px "> {{$column->column_name}}: @if($column->column_type === 'String' || $column->column_type === 'Int' || $column->column_type === 'Date'){{$column->column_type}}!@else {{$column->column_type}}Input!@endif</span>
                                 @endforeach
                             }
                             
-                            <span style="color: green"> "Delete {{$table->table_name }} Input" </span>
-                           <span style="color: blue"> input  </span>Delete{{ucfirst($table->table_name)}}Input </span>@validator{
+                            <span style="color: green"> "{{$table->table_name }} Delete Input" </span>
+                           <span style="color: blue"> input  </span>{{$table->table_name}}DeleteInput </span>@validator{
                                 id: Int!
                             }
                             

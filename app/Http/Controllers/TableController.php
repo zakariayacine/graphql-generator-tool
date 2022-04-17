@@ -26,7 +26,8 @@ class TableController extends Controller
      */
     public function create($id)
     {
-        return view('table.create', compact('id'));
+        $columns = Table::where('project_id', $id)->get();
+        return view('table.create', compact('columns','id'));
     }
 
     /**
