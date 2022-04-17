@@ -47,12 +47,15 @@ body ,table{
                                         <hr>
                                                 <span style="color: blue">return</span> [<br>
                                                 @foreach ($table->columns as $column)
+                                                @if($column->column_type === 'String' || $column->column_type === 'Date' || $column->column_type === 'Str')
                                                 "{{ lcfirst(str_replace('_', '', ucwords($column->column_name, '_')))}}"=>[<br>
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"sometimes",<br>
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"{{$column->column_type}}",<br>
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"max:100",<br>
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"min:1",<br>
                                                 &nbsp;&nbsp;&nbsp;&nbsp;],<br>
+                                                @else
+                                                @endif
                                                 @endforeach
                                                 ]; <br>
                                             </code>
@@ -63,12 +66,15 @@ body ,table{
                                         <hr>
                                             <span style="color: blue">return</span> [<br>
                                             @foreach ($table->columns as $column)
+                                            @if($column->column_type === 'String' || $column->column_type === 'Date' || $column->column_type === 'Str')
                                             "{{ lcfirst(str_replace('_', '', ucwords($column->column_name, '_')))}}"=>[<br>
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Required",<br>
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"{{$column->column_type}}",<br>
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"max:100",<br>
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"min:1",<br>
                                             &nbsp;&nbsp;&nbsp;&nbsp;],<br>
+                                            @else
+                                            @endif
                                             @endforeach
                                             ]; <br>
                                             </td>
@@ -79,11 +85,14 @@ body ,table{
                                         <hr>
                                             <span style="color: blue">return</span> [<br>
                                             @foreach ($table->columns as $column)
+                                            @if($column->column_type === 'String' || $column->column_type === 'Date' || $column->column_type === 'Str')
                                             "{{ lcfirst(str_replace('_', '', ucwords($column->column_name, '_')))}}"=>[<br>
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Required",<br>
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"{{$column->column_type}}",<br>
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"min:1",<br>
                                             &nbsp;&nbsp;&nbsp;&nbsp;],<br>
+                                            @else
+                                            @endif
                                             @endforeach
                                             ]; <br>
                                             </td>
