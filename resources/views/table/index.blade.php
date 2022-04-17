@@ -145,21 +145,21 @@ body ,table{
                            <span style="color: green">  "{{$table->table_name }} input" </span>
                            <span style="color: blue"> input  </span>{{ucfirst($table->table_name)}}Input </span>@validator {
                                 @foreach ($table->columns as $column)
-                                <span style="margin-left:-150px "> {{$column->column_name}}: @if($column->column_type === 'String' || $column->column_type === 'Int' || $column->column_type === 'Date'){{$column->column_type}}!@else {{$column->column_type}}Input!@endif</span>
+                                <span style="margin-left:-150px "> {{ lcfirst(str_replace('_', '', ucwords($column->column_name, '_')))}}: @if($column->column_type === 'String' || $column->column_type === 'Int' || $column->column_type === 'Date'){{$column->column_type}}!@else {{$column->column_type}}Input!@endif</span>
                                 @endforeach
                             }
 
                             <span style="color: green"> "{{$table->table_name }} update input" </span>
                            <span style="color: blue">  input </span>{{$table->table_name}}UpdateInput </span>@validator {
                                 @foreach ($table->columns as $column)
-                               <span style="margin-left:-150px "> {{$column->column_name}}: @if($column->column_type === 'String' || $column->column_type === 'Int' || $column->column_type === 'Date'){{$column->column_type}}!@else {{$column->column_type}}Input!@endif</span>
+                               <span style="margin-left:-150px "> {{ lcfirst(str_replace('_', '', ucwords($column->column_name, '_')))}}: @if($column->column_type === 'String' || $column->column_type === 'Int' || $column->column_type === 'Date'){{$column->column_type}}!@else {{$column->column_type}}Input!@endif</span>
                                 @endforeach
                             }
                             
                            <span style="color: green">  "{{$table->table_name }} Filter input" </span>
                             <span style="color: blue">input  </span>{{ucfirst($table->table_name)}}FilterInput </span>@validator {
                                 @foreach ($table->columns as $column)
-                                <span style="margin-left:-150px "> {{$column->column_name}}: @if($column->column_type === 'String' || $column->column_type === 'Int' || $column->column_type === 'Date'){{$column->column_type}}!@else {{$column->column_type}}Input!@endif</span>
+                                <span style="margin-left:-150px "> {{ lcfirst(str_replace('_', '', ucwords($column->column_name, '_')))}}: @if($column->column_type === 'String' || $column->column_type === 'Int' || $column->column_type === 'Date'){{$column->column_type}}!@else {{$column->column_type}}Input!@endif</span>
                                 @endforeach
                             }
                             
