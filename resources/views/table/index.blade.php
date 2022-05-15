@@ -2,12 +2,16 @@
 
 @section('content')
 <style>
+        .inverter{
+    filter: invert(100%);
+    background-color: rgba(0, 0, 0, 0.795);
+}
     body,
     table {
         font-weight: bold;
     }
 </style>
-<div class="container">
+<div class="container invert">
     <div class="row">
         <div class="col-md-12">
             <div class="card mb-4">
@@ -43,7 +47,6 @@
                                 <td><code><span style="color: blue">php artisan</span> lighthous:validator
                                             {{ucfirst($table->table_name)}}DeleteInputValidator<br></code></td>
                                             
-
                             </tr>
                             <tr>
                                 <th scope="row">
@@ -131,10 +134,6 @@
                             </tr>
                         </tbody>
                     </table>
-
-
-
-
                     <hr>
                     <p style="color: green"> 3- Past this starting code in ./graphql/schema.graphql:</p>
                     <pre style="margin-left:-150px "><code class="code">
