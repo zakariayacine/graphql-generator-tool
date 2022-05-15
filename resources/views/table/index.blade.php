@@ -1,102 +1,133 @@
-
-
 @extends('layouts.app')
 
 @section('content')
 <style>
-body ,table{
-    font-weight: bold;    
-}
+    body,
+    table {
+        font-weight: bold;
+    }
 </style>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
             <div class="card mb-4">
                 <div class="card-body">
-                    <p style="color: green"> 1- execute at first those commands below "for the model {{$table->table_name }}":</p>
+                    <p style="color: green"> 1- execute at first those commands below "for the model
+                        {{$table->table_name }}":</p>
                     <hr>
-                    <span style="color: blue">php artisan</span> lighthous:query {{$table->table_name
+                    <span style="color: blue">php artisan</span> lighthous:query {{ucfirst($table->table_name)
                     }}Query --full<br>
-                    <span style="color: blue">php artisan</span> lighthous:mutation {{$table->table_name
-                    }}Mutation --full<br>
+                    <span style="color: blue">php artisan</span> lighthous:mutation {{ucfirst($table->table_name
+                    )}}Mutation --full<br>
                     <hr>
                     <table class="table table-sm">
                         <thead>
                             <tr>
-                                <th scope="col" colspan="3" style="color: green"> 2- For validation it must create the following inputs with the following commands :</th>
+                                <th scope="col" colspan="3" style="color: green"> 2- For validation it must create the
+                                    following inputs with the following commands :</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <th scope="row" colspan="3">command example :<code> <span style="color: blue">php artisan</span> lighthous:validator "modelName".Validator</code><br>
+                                <th scope="row" colspan="4">command example
+                                    :<code> <span style="color: blue">php artisan</span> lighthous:validator "modelName".Validator</code><br>
                                 </th>
                             </tr>
                             <tr>
                                 <th scope="row"><code><span style="color: blue">php artisan</span> lighthous:validator
-                                            {{$table->table_name}}FilterInputValidator<br></code></th>
+                                            {{ucfirst($table->table_name)}}FilterInputValidator<br></code></th>
                                 <td><code><span style="color: blue">php artisan</span> lighthous:validator
-                                                {{$table->table_name}}InputValidator<br></code></td>
+                                            {{ucfirst($table->table_name)}}InputValidator<br></code></td>
                                 <td><code><span style="color: blue">php artisan</span> lighthous:validator
-                                            {{$table->table_name}}DeleteInputValidator<br></code></td>
+                                           {{ucfirst($table->table_name)}}UpdateInputValidator<br></code></td>
+                                <td><code><span style="color: blue">php artisan</span> lighthous:validator
+                                            {{ucfirst($table->table_name)}}DeleteInputValidator<br></code></td>
+                                            
 
                             </tr>
                             <tr>
                                 <th scope="row">
                                     <code>
-                                        <span style="color: green">Past this starting code in :</span><code> "App\GraphQL\Validator\{{$table->table_name}}Validator"</code> - this is only a starter code !
-                                        <hr>
-                                                <span style="color: blue">return</span> [<br>
-                                                @foreach ($table->columns as $column)
-                                                @if($column->column_type === 'String' || $column->column_type === 'Date' || $column->column_type === 'Str')
-                                                "{{ lcfirst(str_replace('_', '', ucwords($column->column_name, '_')))}}"=>[<br>
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"sometimes",<br>
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"{{$column->column_type}}",<br>
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"max:100",<br>
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"min:1",<br>
-                                                &nbsp;&nbsp;&nbsp;&nbsp;],<br>
-                                                @else
-                                                @endif
-                                                @endforeach
-                                                ]; <br>
-                                            </code>
+                                        <span style="color: green">Past this starting code in :</span><code> "App\GraphQL\Validator\{{$table->table_name}}Validator"</code>
+                                    - this is only a starter code !
+                                    <hr>
+                                    <span style="color: blue">return</span> [<br>
+                                    @foreach ($table->columns as $column)
+                                    @if($column->column_type === 'String' || $column->column_type === 'Date' ||
+                                    $column->column_type === 'Str')
+                                    "{{ lcfirst(str_replace('_', '', ucwords($column->column_name, '_')))}}"=>[<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"sometimes",<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"{{$column->column_type}}",<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"max:100",<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"min:1",<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;],<br>
+                                    @else
+                                    @endif
+                                    @endforeach
+                                    ]; <br>
+                                    </code>
                                 </th>
                                 <td>
                                     <code>
-                                        <span style="color: green">Past this starting code in :</span><code> "App\GraphQL\Validator\{{$table->table_name}}Validator"</code> - this is only a starter code !
-                                        <hr>
-                                            <span style="color: blue">return</span> [<br>
-                                            @foreach ($table->columns as $column)
-                                            @if($column->column_type === 'String' || $column->column_type === 'Date' || $column->column_type === 'Str')
-                                            "{{ lcfirst(str_replace('_', '', ucwords($column->column_name, '_')))}}"=>[<br>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Required",<br>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"{{$column->column_type}}",<br>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"max:100",<br>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"min:1",<br>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;],<br>
-                                            @else
-                                            @endif
-                                            @endforeach
-                                            ]; <br>
-                                            </td>
-                                        </code>
+                                        <span style="color: green">Past this starting code in :</span><code> "App\GraphQL\Validator\{{$table->table_name}}Validator"</code>
+                                    - this is only a starter code !
+                                    <hr>
+                                    <span style="color: blue">return</span> [<br>
+                                    @foreach ($table->columns as $column)
+                                    @if($column->column_type === 'String' || $column->column_type === 'Date' ||
+                                    $column->column_type === 'Str')
+                                    "{{ lcfirst(str_replace('_', '', ucwords($column->column_name, '_')))}}"=>[<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Required",<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"{{$column->column_type}}",<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"max:100",<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"min:1",<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;],<br>
+                                    @else
+                                    @endif
+                                    @endforeach
+                                    ]; <br>
+                                </td>
+                                </code>
                                 <td>
                                     <code>
-                                        <span style="color: green">Past this starting code in :</span><code> "App\GraphQL\Validator\{{$table->table_name}}Validator"</code> - this is only a starter code !
-                                        <hr>
-                                            <span style="color: blue">return</span> [<br>
-                                            @foreach ($table->columns as $column)
-                                            @if($column->column_type === 'String' || $column->column_type === 'Date' || $column->column_type === 'Str')
-                                            "{{ lcfirst(str_replace('_', '', ucwords($column->column_name, '_')))}}"=>[<br>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Required",<br>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"{{$column->column_type}}",<br>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"min:1",<br>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;],<br>
-                                            @else
-                                            @endif
-                                            @endforeach
-                                            ]; <br>
-                                            </td>
-                                        </code>
+                                        <span style="color: green">Past this starting code in :</span><code> "App\GraphQL\Validator\{{$table->table_name}}Validator"</code>
+                                    - this is only a starter code !
+                                    <hr>
+                                    <span style="color: blue">return</span> [<br>
+                                    @foreach ($table->columns as $column)
+                                    @if($column->column_type === 'String' || $column->column_type === 'Date' ||
+                                    $column->column_type === 'Str')
+                                    "{{ lcfirst(str_replace('_', '', ucwords($column->column_name, '_')))}}"=>[<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Required",<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"{{$column->column_type}}",<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"max:100",<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"min:1",<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;],<br>
+                                    @else
+                                    @endif
+                                    @endforeach
+                                    ]; <br>
+                                </td>
+                                <td>
+                                    <code>
+                                        <span style="color: green">Past this starting code in :</span><code> "App\GraphQL\Validator\{{$table->table_name}}Validator"</code>
+                                    - this is only a starter code !
+                                    <hr>
+                                    <span style="color: blue">return</span> [<br>
+                                    @foreach ($table->columns as $column)
+                                    @if($column->column_type === 'String' || $column->column_type === 'Date' ||
+                                    $column->column_type === 'Str')
+                                    "{{ lcfirst(str_replace('_', '', ucwords($column->column_name, '_')))}}"=>[<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Required",<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"{{$column->column_type}}",<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"min:1",<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;],<br>
+                                    @else
+                                    @endif
+                                    @endforeach
+                                    ]; <br>
+                                </td>
+                                </code>
                             </tr>
                         </tbody>
                     </table>
@@ -122,8 +153,9 @@ body ,table{
         <div class="col-md-12">
             <div class="card mb-4">
                 <div class="card-body">
-                    <span  style="color: green"> create a file in <code>"./graphql/{{$table->table_name }}.graphql"</code></span>
-                    <span style="color: green">then past this starting code :</span >
+                    <span style="color: green"> create a file in
+                        <code>"./graphql/{{$table->table_name }}.graphql"</code></span>
+                    <span style="color: green">then past this starting code :</span>
 
                     <hr>
                     <pre style="margin-left:-150px "><code class="code">
@@ -139,10 +171,10 @@ body ,table{
                             <span style="color: blue"> extend type </span>Mutation </span>{
                                 {{$table->table_name}}Create(data: {{ucfirst($table->table_name) }}Input): {{ucfirst($table->table_name)}}!
                                     @field(resolver: "App\\GraphQL\\Mutations\\{{ucfirst($table->table_name) }}Mutation@create")
-                               {{$table->table_name}}Update(data: Update{{ucfirst($table->table_name) }}Input): {{ucfirst($table->table_name)}}!
+                               {{$table->table_name}}Update(data: {{ucfirst($table->table_name)}}UpdateInput): {{ucfirst($table->table_name)}}!
                                     @field(resolver: "App\\GraphQL\\Mutations\\{{ucfirst($table->table_name) }}Mutation@update")
                                 {{$table->table_name}}Delete(
-                                    delete: Delete{{ucfirst($table->table_name) }}Input): DeletedMessage!
+                                    delete: {{ucfirst($table->table_name)}}DeleteInput): DeletedMessage!
                                     @field(resolver: "App\\GraphQL\\Mutations\\{{ucfirst($table->table_name) }}Mutation@delete")
                             }
                             <span style="color: green"> "get {{$table->table_name }} informations" </span>
@@ -154,26 +186,26 @@ body ,table{
                            <span style="color: green">  "{{$table->table_name }} input" </span>
                            <span style="color: blue"> input  </span>{{ucfirst($table->table_name)}}Input </span>@validator {
                                 @foreach ($table->columns as $column)
-                                <span style="margin-left:-150px "> {{ lcfirst(str_replace('_', '', ucwords($column->column_name, '_')))}}: @if($column->column_type === 'String' || $column->column_type === 'Int' || $column->column_type === 'Date'){{$column->column_type}}!@else {{$column->column_type}}Input!@endif</span>
+                                @if($column->column_name == 'id') @elseif($column->column_type === 'String' || $column->column_type === 'Int' || $column->column_type === 'Date')<span style="margin-left:-150px "> {{ lcfirst(str_replace('_', '', ucwords($column->column_name, '_')))}}: {{$column->column_type}}!@else <span style="margin-left:-150px ">{{ lcfirst(str_replace('_', '', ucwords($column->column_name, '_')))}}Id: Int! @endif</span>
                                 @endforeach
                             }
 
                             <span style="color: green"> "{{$table->table_name }} update input" </span>
-                           <span style="color: blue">  input </span>{{$table->table_name}}UpdateInput </span>@validator {
+                           <span style="color: blue">  input </span>{{ucfirst($table->table_name)}}UpdateInput </span>@validator {
                                 @foreach ($table->columns as $column)
-                               <span style="margin-left:-150px "> {{ lcfirst(str_replace('_', '', ucwords($column->column_name, '_')))}}: @if($column->column_type === 'String' || $column->column_type === 'Int' || $column->column_type === 'Date'){{$column->column_type}}!@else {{$column->column_type}}Input!@endif</span>
+                                @if($column->column_type === 'String' || $column->column_type === 'Int' || $column->column_type === 'Date')<span style="margin-left:-150px "> {{ lcfirst(str_replace('_', '', ucwords($column->column_name, '_')))}}: {{$column->column_type}}!@else<span style="margin-left:-150px "> {{ lcfirst(str_replace('_', '', ucwords($column->column_name, '_')))}}Id: Int!@endif</span>
                                 @endforeach
                             }
                             
                            <span style="color: green">  "{{$table->table_name }} Filter input" </span>
                             <span style="color: blue">input  </span>{{ucfirst($table->table_name)}}FilterInput </span>@validator {
                                 @foreach ($table->columns as $column)
-                                <span style="margin-left:-150px "> {{ lcfirst(str_replace('_', '', ucwords($column->column_name, '_')))}}: @if($column->column_type === 'String' || $column->column_type === 'Int' || $column->column_type === 'Date'){{$column->column_type}}!@else {{$column->column_type}}Input!@endif</span>
+                                @if($column->column_type === 'String' || $column->column_type === 'Int' || $column->column_type === 'Date')<span style="margin-left:-150px "> {{ lcfirst(str_replace('_', '', ucwords($column->column_name, '_')))}}: {{$column->column_type}}!@else<span style="margin-left:-150px "> {{ lcfirst(str_replace('_', '', ucwords($column->column_name, '_')))}}Id: Int!@endif</span>
                                 @endforeach
                             }
                             
                             <span style="color: green"> "{{$table->table_name }} Delete Input" </span>
-                           <span style="color: blue"> input  </span>{{$table->table_name}}DeleteInput </span>@validator{
+                           <span style="color: blue"> input  </span>{{ucfirst($table->table_name)}}DeleteInput </span>@validator{
                                 id: Int!
                             }
                             
@@ -188,16 +220,23 @@ body ,table{
         <div class="col-md-12">
             <div class="card mb-4">
                 <div class="card-body">
-                   <span style="color: green">Past this starting code in :</span><code> "App\GraphQL\Query\{{$table->table_name}}Query"</code> - this is only a starter code !
+                    <span style="color: green">Past this starting code in
+                        :</span><code> "App\GraphQL\Query\{{$table->table_name}}Query"</code> - this is only a starter
+                    code !
                     <hr>
                     <pre>
                                     <code class="code">
                                         <span style="color: blue">public function</span> <span style="color: rgb(216, 104, 0)">List($root, array $args, GraphQLContext $context, ResolveInfo $resolveInfo)</span>{
                                             <span style="color: blue">${{lcfirst($table->table_name)}}</span> =  <span style="color: rgb(20, 100, 0)">{{ucfirst($table->table_name)}}</span><span style="color: rgb(148, 27, 5)">::query()</span>;
                                         @foreach ($table->columns as $column)
+                                        @if($column->column_type === 'String' || $column->column_type === 'Int' || $column->column_type === 'Date')
                                         <span style="color: blue; margin-left:-300px;">if</span>(Arr::get($args,<span style="color: rgb(202, 55, 18)">'filter.{{ lcfirst(str_replace('_', '', ucwords($column->column_name, '_')))}}'</span>)){
                                             <span style="color: blue"> ${{lcfirst($table->table_name)}}</span>->where('{{$column->column_name}}',Arr::get($args,'filter.{{ lcfirst(str_replace('_', '', ucwords($column->column_name, '_')))}}'));
+                                        }@else
+                                        <span style="color: blue; margin-left:-300px;">if</span>(Arr::get($args,<span style="color: rgb(202, 55, 18)">'filter.{{ lcfirst(str_replace('_', '', ucwords($column->column_name, '_')))}}Id'</span>)){
+                                            <span style="color: blue"> ${{lcfirst($table->table_name)}}</span>->where('{{$column->column_name}}_id',Arr::get($args,'filter.{{ lcfirst(str_replace('_', '', ucwords($column->column_name, '_')))}}Id'));
                                         }
+                                        @endif
                                         @endforeach
                                         <span style="color: rgb(255, 0, 0); margin-left:-300px;">return</span> <span style="color: blue">${{lcfirst($table->table_name)}};</span>
                                         }
@@ -209,15 +248,18 @@ body ,table{
         <div class="col-md-12">
             <div class="card mb-4">
                 <div class="card-body">
-                    <span style="color: green">Past this starting code in :</span><code> "App\GraphQL\Mutation\{{$table->table_name}}Mutation"</code> - this is only a starter code !
-                 <hr>
+                    <span style="color: green">Past this starting code in
+                        :</span><code> "App\GraphQL\Mutation\{{$table->table_name}}Mutation"</code> - this is only a
+                    starter code !
+                    <hr>
                     <pre style="margin-left:-150px">
                         <code class="code">
                             public function create($root, array $args, GraphQLContext $context, ResolveInfo $resolveInfo)
                             {
                                 ${{lcfirst($table->table_name)}} = new {{ucfirst($table->table_name)}}();
                                 @foreach ($table->columns as $column)
-                                <span style="color: blue; margin-left:-200px;">  ${{lcfirst($table->table_name)}}->{{$column->column_name}} </span>= Arr::get($args, 'data.{{ lcfirst(str_replace('_', '', ucwords($column->column_name, '_')))}}');
+                                @if($column->column_type === 'String' || $column->column_type === 'Int' || $column->column_type === 'Date')<span style="color: blue; margin-left:-200px;">  ${{lcfirst($table->table_name)}}->{{$column->column_name}} </span>= Arr::get($args, 'data.{{ lcfirst(str_replace('_', '', ucwords($column->column_name, '_')))}}');@else <span style="color: blue; margin-left:-200px;">  ${{lcfirst($table->table_name)}}->{{$column->column_name}}_id </span>= Arr::get($args, 'data.{{ lcfirst(str_replace('_', '', ucwords($column->column_name, '_')))}}Id');@endif</span>
+                                
                                 @endForeach
                                 <span style="color: blue; margin-left:-185px;">${{lcfirst($table->table_name)}}</span>->save();
                                 return ${{lcfirst($table->table_name)}};
@@ -226,9 +268,13 @@ body ,table{
                             {
                                 ${{lcfirst($table->table_name)}} = {{ucfirst($table->table_name)}}::find(Arr::get($args, 'data.identifier')); //replace indentifier
                                 @foreach ($table->columns as $column)
+                                @if($column->column_type === 'String' || $column->column_type === 'Int' || $column->column_type === 'Date')
                                 <span style="color: blue; margin-left:-200px;">if </span>(Arr::get($args, 'data.{{ lcfirst(str_replace('_', '', ucwords($column->column_name, '_')))}}')){
-                                    ${{lcfirst($table->table_name)}}->comments = Arr::get($args, 'data.{{ lcfirst(str_replace('_', '', ucwords($column->column_name, '_')))}}');
-                                }
+                                    ${{lcfirst($table->table_name)}}->{{$column->column_name}} = Arr::get($args, 'data.{{ lcfirst(str_replace('_', '', ucwords($column->column_name, '_')))}}');}
+                                @else
+                                <span style="color: blue; margin-left:-200px;">if </span>(Arr::get($args, 'data.{{ lcfirst(str_replace('_', '', ucwords($column->column_name, '_')))}}Id')){
+                                    ${{lcfirst($table->table_name)}}->{{$column->column_name}}_id = Arr::get($args, 'data.{{ lcfirst(str_replace('_', '', ucwords($column->column_name, '_')))}}Id');}
+                                @endif
                                 @endForeach
                                 <span style="color: blue; margin-left:-200px;">${{lcfirst($table->table_name)}}</span>->save();
                                 return ${{lcfirst($table->table_name)}};

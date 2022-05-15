@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\TableController;
+use App\Http\Middleware\ProjectOwnerMiddleware;
+use App\Http\Middleware\ScheemaOwnerMiddleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,13 +24,17 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/project', [App\Http\Controllers\ProjectController::class, 'index'])->name('home');
-Route::get('/project/create', [App\Http\Controllers\ProjectController::class, 'create'])->name('create');
-Route::get('/project/show/{id}', [App\Http\Controllers\ProjectController::class, 'show'])->name('show');
-Route::post('/project/store', [App\Http\Controllers\ProjectController::class, 'store']);
-//model
-Route::get('/project/model/show/{id}', [App\Http\Controllers\TableController::class, 'index'])->name('index');
-Route::get('/project/model/create/{id}', [App\Http\Controllers\TableController::class, 'create'])->name('create');
-Route::get('/project/model/destroy/{id}', [App\Http\Controllers\TableController::class, 'destroy']);
-Route::post('/project/model/store/{id}', [App\Http\Controllers\TableController::class, 'store']);
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/project', [ProjectController::class, 'index'])->name('home');
+Route::get('/project/create', [ProjectController::class, 'create'])->name('create');
+Route::post('/project/store', [ProjectController::class, 'store']);
+
+Route::get('/project/show/{id}', [ProjectController::class, 'show'])->name('show')->middleware(ProjectOwnerMiddleware::class);
+
+Route::middleware([ScheemaOwnerMiddleware::class])->group(function () {
+    //model
+    Route::get('/project/model/show/{id}', [TableController::class, 'index'])->name('index');
+    Route::get('/project/model/create/{id}', [TableController::class, 'create'])->name('create');
+    Route::get('/project/model/destroy/{id}', [TableController::class, 'destroy']);
+    Route::post('/project/model/store/{id}', [TableController::class, 'store']);
+});
