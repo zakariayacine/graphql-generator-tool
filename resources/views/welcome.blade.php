@@ -1,63 +1,62 @@
-@extends('layouts.app')
-
-@section('content')
 <style>
-    .text-red-500 {
-        font-size: 500;
-        color: brown;
-    }
-    .graphql{
-        color:#e535ab !important;
-        font-weight: bolder;
-        font-size: 10ch; 
-    }
-    .laravel{
-        color:crimson !important;
-        font-weight: bolder;
-        font-size: 10ch; 
-    }
-    .btn{
-        border-radius: 0%;
-    }
-    .fixed{
-        z-index: -3;
-    }
+  .text-red-500 {
+      font-size: 500;
+      color: brown;
+  }
+  .graphql{
+      color:#000000 !important;
+      font-weight: bolder;
+      font-size: 10ch; 
+  }
+  .laravel{
+      color:#D50022 !important;
+      font-weight: bolder;
+      font-size: 10ch; 
+  }
+  .btn{
+      border-radius: 0%;
+  }
+  .fixed{
+      z-index: -3;
+      margin-top: -670px;
+  }
+  .btn{
+    border-radius: 0% !important;
+  }
 
-    .container{
-	position:relative;
-    z-index: 3;
+  .container{
+position:relative;
+  z-index: 3;
 }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/ScrollMagic.min.js"></script>
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-<section class="fixed" id="particles-js">
+
+@extends('layouts.app')
+@section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12" align="center">
         <br>
            <h1 class="mt-5 graphql mb-4">Graphql Generator For</h1>
            <h1 class="laravel"> LARAVEL PHP Framework</h1>
-           <button class="btn btn-outline-success">Start your project !</button> <button class="btn btn-outline-success">Login !</button>
-           <hr>
+          
         </div>
 
-        <div class="col-md-4">
-            <p>https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/ScrollMagic.min.jsmmy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-            </p>        
-        </div>
-        <div class="col-md-4">
-            <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                </p> 
-
-        </div>
-        <div class="col-md-4">
-            <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                </p> 
+        <div class="col-md-8 mt-5" align="center">
+          <h5>Before starting, I would like to thank everyone who inspires me to make this happen, and I want to thank the larval community for the support!
+         </h5><h5>This project is an open source laravel project and this tool helps you generate a starting CRUD code for your laravel application that uses GraphQl Lighthouse.
+        </h5><h5>You only have to do is to sign up and start a project! Every instruction is in the generated code.
+          
+          </h5>
+          <hr>
+          <a class="btn btn-danger btn-lg" href="/register">Start your project !</a> <a class="btn btn-outline-danger btn-lg" href="/login">Login !</a>
+          <h6 class="mt-3">This is the link for the <a  target="_blank" href="https://github.com/zakariayacine/graphql-generator-tool">github project</a> rate it and contribute !
+          </h6>
         </div>
     </div>
 </div>
+<section class="fixed" id="particles-js">
 </section>
 <script>
 particlesJS("particles-js", {
@@ -70,16 +69,16 @@ particlesJS("particles-js", {
       }
     },
     "color": {
-      "value": "#e535ab"
+      "value": "#EA7CC5"
     },
     "shape": {
       "type": "triangle",
       "stroke": {
         "width": 0,
-        "color": "#e535ab"
+        "color": "#EA7CC5"
       },
       "polygon": {
-        "nb_sides": 10
+        "nb_sides": 5
       },
       "image": {
         "src": "img/github.svg",
@@ -111,12 +110,12 @@ particlesJS("particles-js", {
       "enable": true,
       "distance": 150,
       "color": "#e535ab",
-      "opacity": 0.4,
+      "opacity": 0.1,
       "width": 1
     },
     "move": {
       "enable": true,
-      "speed": 6,
+      "speed": 3,
       "direction": "none",
       "random": true,
       "straight": false,
@@ -153,7 +152,7 @@ particlesJS("particles-js", {
         "distance": 400,
         "size": 100,
         "duration": 2,
-        "opacity": 8,
+        "opacity": 3,
         "speed": 3
       },
       "repulse": {
@@ -170,7 +169,5 @@ particlesJS("particles-js", {
   },
   "retina_detect": true
 });
-
-
 </script>
 @endsection

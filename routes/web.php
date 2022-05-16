@@ -25,16 +25,14 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/project', [ProjectController::class, 'index'])->name('home');
 Route::get('/project/create', [ProjectController::class, 'create'])->name('create');
 Route::post('/project/store', [ProjectController::class, 'store']);
 
-Route::get('/project/show/{id}', [ProjectController::class, 'show'])->name('show')->middleware(ProjectOwnerMiddleware::class);
+Route::post('/table/show', [HomeController::class, 'index'])->name('index');
+Route::post('/table/destroy', [ProjectController::class, 'destroy']);
 
-Route::middleware([ScheemaOwnerMiddleware::class])->group(function () {
     //model
-    Route::get('/project/model/show/{id}', [TableController::class, 'index'])->name('index');
-    Route::get('/project/model/create/{id}', [TableController::class, 'create'])->name('create');
-    Route::get('/project/model/destroy/{id}', [TableController::class, 'destroy']);
-    Route::post('/project/model/store/{id}', [TableController::class, 'store']);
-});
+    Route::get('/show/{id}', [TableController::class, 'index'])->name('index');
+    Route::get('/model/create/{id}', [TableController::class, 'create'])->name('create');
+    Route::post('/model/destroy/', [TableController::class, 'destroy']);
+    Route::post('/model/store/{id}', [TableController::class, 'store']);

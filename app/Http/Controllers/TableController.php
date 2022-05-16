@@ -16,7 +16,8 @@ class TableController extends Controller
     public function index($id)
     {
         $table = Table::find($id);
-        return view("table.index", compact('table'));
+        $tables = Table::where('project_id', $table->project_id)->get();
+        return view("table.index", compact('table','tables'));
     }
 
     /**
@@ -100,6 +101,6 @@ class TableController extends Controller
     {
         $table = Table::find($id);
         $table->delete();
-        return redirect('/project');
+        return redirect('/');
     }
 }

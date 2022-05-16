@@ -49,7 +49,7 @@ class ProjectController extends Controller
         $project->project_name = $request->projectName;
         $project->user_id = Auth::id();
         $project->save();
-        return redirect('/project');
+        return view('home', compact('project'));
     }
 
     /**
@@ -93,8 +93,9 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Project $project)
+    public function destroy(Request $request)
     {
-        //
+        Project::destroy($request->id);
+        return view('home');
     }
 }

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
+use App\Models\Table;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -21,8 +24,17 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('home');
+
+        if($request){
+            $table = Table::where('project_id',$request->id)->get();
+            $table->project_id = $request->id;
+        }else{
+            $table = '';
+            dd($table);
+        }
+        $projects = Project::where('user_id',Auth::id())->get();
+        return view('home', compact('projects','table'));
     }
 }

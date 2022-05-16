@@ -11,7 +11,11 @@
 
 
                     <div class="container mt-5">
-                        <a href="/project" class="btn btn-success">Retour vers la liste</a>
+                        <form action="/table/show" method="post">
+                            <input type="hidden" value="{{$id}}" name="id">
+                            @csrf
+                            <button class="btn btn-success">Retour vers la liste</button>
+                            </form>
                         <h2 align="center">Columns add</h2>
 
                         <div class="form-group">
@@ -83,7 +87,7 @@
 
     $(document).ready(function () {
 
-        var postURL = "/project/model/store/{{$id}}";
+        var postURL = "/model/store/{{$id}}";
 
         var i = 1;
 

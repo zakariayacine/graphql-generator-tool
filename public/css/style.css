@@ -1,2 +1,18 @@
-
-
+body{
+    font-family: 'Lexend', sans-serif;
+}
+.card-header{
+    background-color: #D50022 !important;
+    color:aliceblue !important;
+    padding: 3%;
+    font-size: x-large;
+}
+.card-body{
+    background-color: #ffffff !important;
+    color:aliceblue !important;
+    padding: 3%;
+    font-size: larger;
+}
+.btn{
+    border-radius: 0% !important;
+}

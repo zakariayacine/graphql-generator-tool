@@ -2,7 +2,7 @@
 
 @section('content')
 <style>
-        .inverter{
+        .invert{
     filter: invert(100%);
     background-color: rgba(0, 0, 0, 0.795);
 }
@@ -13,8 +13,28 @@
 </style>
 <div class="container invert">
     <div class="row">
-        <div class="col-md-12">
-            <div class="card mb-4">
+        <div class="col-md-3 invert">
+            <table class="table">
+                <thead>
+                  <tr >
+                    <th scope="col" class="invert">Table name</th>
+                    <th scope="col" class="invert">show scheema</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    @foreach ($tables as $table)
+                  <tr>
+                    <th scope="row" class="invert">{{$table->table_name}}</th>
+                    <td>
+                        <td><a class="btn btn-success" href="/show/{{$table->id}}">Show</a></td>
+                    </td>
+                  </tr>
+                  @endforeach
+                </tbody>
+              </table>
+        </div>
+        <div class="col-md-9">
+            <div class="card mb-4 ">
                 <div class="card-body">
                     <p style="color: green"> 1- execute at first those commands below "for the model
                         {{$table->table_name }}":</p>
